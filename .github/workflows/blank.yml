@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Botanical Knowledge Portal</title>
+  <style>
+    body {
+      font-family: "Times New Roman", serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #222;
+    }
+    header {
+      background: #2f5d50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #2f5d50;
+    }
+    .chatbot {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .chat-window {
+      height: 250px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      background: #fafafa;
+    }
+    .user { color: #1a73e8; }
+    .bot { color: #188038; }
+    input {
+      width: 80%;
+      padding: 8px;
+      font-family: inherit;
+    }
+    button {
+      padding: 8px 15px;
+      background: #2f5d50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #e0e0e0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Library Botanical Knowledge Portal</h1>
+  <p>Academic One-Page Website | College Project</p>
+</header>
+
+<section>
+  <h2>About the Library</h2>
+  <p>
+    This library portal provides academic information related to trees, plants, herbs,
+    and their scientific names. It is designed to support students and researchers
+    in botanical and environmental studies.
+  </p>
+</section>
+
+<section>
+  <h2>AI Botanical Chatbot</h2>
+  <div class="chatbot">
+    <div class="chat-window" id="chatWindow"></div>
+    <input type="text" id="userInput" placeholder="Ask about a plant... (e.g., Neem)" />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</section>
+
+<footer>
+  © 2026 College Library Project | Created by Student
+</footer>
+
+<script>
+  const plantDatabase = {
+  "akanda": "Akanda (Calotropis gigantea): Used traditionally for toothache relief and in cold, cough, fever, and jaundice remedies.",
+  "tobacco": "Tobacco (Nicotiana tabacum): Dried leaves traditionally placed on painful teeth for temporary relief.",
+  "apanga": "Apanga (Achyranthes aspera): Root used in folk medicine for toothache relief.",
+  "lojabati": "Lojyabati (Mimosa pudica): Roots used for toothache; leaves and stems used for cold and cough remedies.",
+  "karanj": "Karanj (Caesalpinia crista): Warmed oil applied traditionally for tooth pain.",
+  "veranda": "Veranda (Jatropha gossypifolia): Leaves and plant parts used in traditional toothache treatments.",
+  "clove": "Clove (Syzygium aromaticum): Commonly applied for toothache relief.",
+  "babla": "Babla (Vachellia nilotica): Leaves and roots powdered and used for dental care.",
+  "basak": "Basak (Justicia adhatoda): Leaves boiled and taken for cold and cough.",
+  "tulsi": "Tulsi (Ocimum canum): Used for toothache, cold, cough, and fever remedies.",
+  "siuli": "Siuli (Nyctanthes arbor-tristis): Used traditionally for cold, fever, worms, and jaundice.",
+  "golanch": "Golanch (Tinospora cordifolia): Used for cold, diabetes control, and tonsils in folk medicine.",
+  "haritaki": "Haritaki (Terminalia chebula): Used for cough relief and digestive health.",
+  "nayantara": "Nayantara (Catharanthus roseus): Leaves and flowers traditionally used in diabetes management.",
+  "jam": "Jam (Syzygium cumini): Seeds used in traditional diabetes remedies.",
+  "kalmegh": "Kalmegh (Andrographis paniculata): Used for diabetes, worms, and general detoxification.",
+  "neem": "Neem (Azadirachta indica): Leaves used in diabetes-related traditional practices.",
+  "bel": "Bel (Aegle marmelos): Fruit and juice traditionally used for worm treatment.",
+  "pineapple": "Pineapple (Ananas comosus): Leaf juice used traditionally for intestinal worms.",
+  "bahera": "Bahera (Terminalia bellirica): Leaf juice used in diabetes and jaundice folk remedies.",
+  "bhui amla": "Bhui Amla (Phyllanthus niruri): Leaf juice used traditionally for jaundice.",
+  "mango": "Mango (Mangifera indica): Bark juice used in traditional jaundice remedies.",
+  "sugarcane": "Sugarcane (Saccharum officinarum): Juice consumed traditionally during jaundice.",
+  "banana": "Banana (Musa acuminata): Stem juice used in folk medicine for jaundice.",
+  "bamboo": "Bamboo (Bambuseae): Leaves boiled and used in traditional oral hygiene practices."
+};
+
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value.toLowerCase();
+    const chat = document.getElementById("chatWindow");
+
+    if (!message) return;
+
+    chat.innerHTML += `<div class='user'><b>You:</b> ${input.value}</div>`;
+
+    let reply = plantDatabase[message] ||
+      "Sorry, I don't have data on that plant yet. (Demo academic chatbot)";
+
+    chat.innerHTML += `<div class='bot'><b>Bot:</b> ${reply}</div>`;
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
